@@ -46,7 +46,7 @@ installed but off, or one command away. **Replaced** and **Skipped** give the re
 
 | Tool | Status | Notes |
 |---|---|---|
-| Figma MCP | Ready | Official plugin, disabled. Needs Figma sign-in. README's SSE command replaced by the remote server |
+| Figma MCP | Ready | Official plugin, disabled, not signed in. README's SSE command replaced by the remote server |
 | Figma Code Connect | Ready | `figma-code-connect` skill in the plugin. Figma plan required |
 | Web Artifacts Builder | Skipped | The Artifact tool does this here |
 
@@ -83,7 +83,7 @@ installed but off, or one command away. **Replaced** and **Skipped** give the re
 
 | Tool | Status | Notes |
 |---|---|---|
-| Vercel | Ready | Official plugin, disabled. Needs sign-in; helpers need `bun` |
+| Vercel | Ready | CLI 65.11.0 installed. Official plugin disabled, MCP server not signed in. Telemetry off |
 | PinMe | Ready | Runs through npx. Public IPFS, so ask first |
 
 ## Recommended stacks

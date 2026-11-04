@@ -8,6 +8,7 @@ PLAYWRIGHT_MCP=0.0.84
 CONTEXT7_MCP=4.5.0
 DEVTOOLS_MCP=1.12.0
 TS_SERVER=6.0.3
+VERCEL_CLI=65.11.0
 TYPESCRIPT=6.0.3  # TypeScript 7 ships no tsserver, which the language server needs
 
 ROOT=$(cd -- "$(dirname -- "$0")" && pwd)
@@ -52,7 +53,21 @@ typescript_lsp() {
   plugin "typescript-lsp@$OFFICIAL"
 }
 
+vercel_setup() {
+  npm i -g --prefix "$HOME/.local" "vercel@$VERCEL_CLI" >/dev/null 2>&1
+  vercel telemetry disable >/dev/null 2>&1 || true
+  python3 - <<'PY'
+import json, pathlib
+path = pathlib.Path.home() / ".claude/settings.json"
+settings = json.loads(path.read_text())
+settings.setdefault("env", {})["VERCEL_PLUGIN_TELEMETRY"] = "off"
+path.write_text(json.dumps(settings, indent=2) + "\n")
+PY
+  plugin "vercel@$OFFICIAL" disabled
+}
+
 check() {
+  set +e  # every probe below is allowed to fail; say() reports it
   local bad=0
   say() { if [ "$2" = 0 ]; then echo "ok    $1"; else echo "MISS  $1"; bad=1; fi; }
   has() { command -v "$1" >/dev/null; echo $?; }
@@ -98,7 +113,7 @@ case "$stack" in
     mcp chrome-devtools npx -y "chrome-devtools-mcp@$DEVTOOLS_MCP" --headless --isolated \
       --no-usage-statistics --no-performance-crux --executablePath "$CHROME"
     plugin "figma@$OFFICIAL" disabled
-    plugin "vercel@$OFFICIAL" disabled
+    vercel_setup
     ;;
   *) echo "unknown stack: $stack" >&2; exit 2 ;;
 esac

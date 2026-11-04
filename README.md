@@ -50,5 +50,6 @@ diff: a skill is instructions Claude will follow.
 
 - Impeccable's detector hook runs on UI file edits in every project. Run `/impeccable hooks off`
   inside a project to silence it there. Its telemetry is off; the setting is in `~/.impeccable/config.json`.
-- Figma and Vercel are installed but disabled to save context. See `references/pipelines.md`.
+- The Figma and Vercel plugins are installed but disabled and not signed in. See
+  `references/pipelines.md` to enable them. The Vercel CLI works without the plugin.
 - Vendored skills keep their MIT licences in `skills/frontend/library/licenses/`.

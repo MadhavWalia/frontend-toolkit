@@ -2,10 +2,12 @@
 
 ## Figma to code
 
-The Figma plugin is installed but disabled, because it adds about 2.4k tokens to every session.
+The Figma plugin is installed but disabled, and has never been signed in. It uses Figma's remote
+server, `mcp.figma.com`, and adds about 2.4k tokens to every session.
 
-1. Enable it: `claude plugin enable figma@claude-plugins-official`, then restart.
-2. Authenticate through `/mcp` the first time. It uses Figma's remote server, `mcp.figma.com`.
+1. Enable it: `claude plugin enable -s user figma@claude-plugins-official`, then `/reload-plugins`.
+   Sign in through `/mcp`, following "Signing in on WSL" below.
+2. Load the plugin's `figma-design-to-code` skill before calling `get_design_context`.
 3. Read the design with `get_design_context` and tokens with `get_variable_defs`.
 4. Check `get_code_connect_map` before creating a component. Use the mapped one if it exists.
 5. Implement with the project's tokens. Never paste generated values over them.
@@ -15,6 +17,18 @@ The Figma plugin is installed but disabled, because it adds about 2.4k tokens to
 Code Connect is set up in Figma and maps its components to code; the plugin's `figma-code-connect`
 skill covers it. Disable the plugin when finished. On WSL use this remote server. The desktop server
 on `127.0.0.1:3845` runs on the Windows side and may not be reachable from Linux.
+
+## Signing in on WSL
+
+MCP sign-in redirects the Windows browser to a listener on `localhost` inside WSL. It can fail in
+three ways:
+
+- **Company network:** sign-in may land on the company's login page. Use another network.
+- **Dialog closed:** the listener lives only while the `/mcp` dialog is open. Leave it open.
+- **"Site can't be reached" on `localhost`:** the WSL to Windows link may be down, which is common
+  after changing networks. Check `dmesg` for `UtilAcceptVsock` errors. Copy the full callback address
+  from the browser and, with the dialog still open, run `curl '<address>'` in a second WSL terminal.
+  `wsl --shutdown` from PowerShell should fix the link, but ends every WSL process.
 
 ## Testing and browser automation
 
@@ -58,8 +72,14 @@ Every deploy publishes something. Confirm with the user before running one.
 | Need | Use |
 |---|---|
 | Private preview to share | Artifact tool, for a single page |
-| Project hosted on Vercel | `claude plugin enable vercel@claude-plugins-official`, restart, then authenticate. Adds about 4.2k tokens and session hooks, so disable it afterwards. Its helper packages need `bun` |
+| Project hosted on Vercel | Vercel CLI, which needs no plugin. Check `vercel whoami`, link with `vercel link`, then `vercel deploy` for a preview. Use `--prod` only when asked |
 | Throwaway public static site | PinMe: `npx pinme@2.0.12 upload dist` |
+
+The Vercel plugin is installed but disabled, and its MCP server has never been signed in. The server
+reads projects, deployments and logs. Enable it with
+`claude plugin enable -s user vercel@claude-plugins-official`. It adds about 4.2k tokens per session
+and session hooks. In a completely empty directory those hooks tell Claude to skip planning and
+scaffold; the user's instructions still win.
 
 PinMe publishes to IPFS. Treat anything uploaded as public and impossible to fully take down. Never
 use it for private, client or regulated data, and never for this machine's complaint datasets.
