@@ -1,0 +1,82 @@
+{
+  "sources": {
+    "freshtechbro": {"repo": "freshtechbro/claudedesignskills", "commit": "1da73febff0c3e1dfefc07f8a5ef8f7d1dfdb6cd", "license": "MIT"},
+    "kylezantos": {"repo": "kylezantos/design-motion-principles", "commit": "4a9ca879f24a361f4dca4174fe2da0f67b5ddee3", "license": "MIT"},
+    "wondelai": {"repo": "wondelai/skills", "commit": "d8d5d75f83da9f16d8aad5bab5f5b341a4770a30", "license": "MIT"},
+    "jeffallan": {"repo": "Jeffallan/claude-skills", "commit": "078a25cc5bfd8011459be7b91d004e900c1d02d3", "license": "MIT"},
+    "blencorp": {"repo": "blencorp/claude-code-kit", "commit": "d1b17ed60a7fa870ca4346dcbbac9a54602ca7af", "license": "MIT"},
+    "addyosmani": {"repo": "addyosmani/web-quality-skills", "commit": "afa8da942115f2961fdbfa80807ea0b232ff6c00", "license": "MIT"},
+    "cloudai-x": {"repo": "CloudAI-X/threejs-skills", "commit": "0e181866f095b5f06d005133876e926515390d95", "license": "MIT"},
+    "ibelick": {"repo": "ibelick/ui-skills", "commit": "73fb128d046d1f0d74c2909cd26eb616e3415567", "license": "MIT"},
+    "jezweb": {"repo": "jezweb/claude-skills", "commit": "1260fa7439b36b18dbf16648ccc7fb44783f6c23", "license": "MIT"},
+    "navigator": {"repo": "qf-studio/navigator", "commit": "435dd4b2d0c7c52cfa06f660d3d2e2564b7fd45e", "license": "MIT"}
+  },
+  "skills": {
+    "theming": {
+      "blencorp": {"cli/kits/tailwindcss/skills/tailwindcss": "tailwindcss"},
+      "jezweb": {
+        "plugins/frontend/skills/tailwind-theme-builder": "tailwind-theme-builder",
+        "plugins/frontend/skills/shadcn-ui": "shadcn-ui"
+      }
+    },
+    "motion": {
+      "freshtechbro": {
+        ".claude/skills/gsap-scrolltrigger": "gsap-scrolltrigger",
+        ".claude/skills/motion-framer": "motion-framer",
+        ".claude/skills/scroll-reveal-libraries": "scroll-reveal-libraries",
+        ".claude/skills/lottie-animations": "lottie-animations",
+        ".claude/skills/react-spring-physics": "react-spring-physics"
+      },
+      "kylezantos": {"skills/design-motion-principles": "design-motion-principles"},
+      "ibelick": {"skills/fixing-motion-performance": "fixing-motion-performance"}
+    },
+    "ux": {
+      "wondelai": {
+        "ux-heuristics": "ux-heuristics",
+        "refactoring-ui": "refactoring-ui",
+        "web-typography": "web-typography",
+        "microinteractions": "microinteractions",
+        "design-everyday-things": "design-everyday-things"
+      },
+      "ibelick": {
+        "skills/baseline-ui": "baseline-ui",
+        "skills/fixing-accessibility": "fixing-accessibility",
+        "skills/fixing-metadata": "fixing-metadata"
+      }
+    },
+    "quality": {
+      "addyosmani": {
+        "skills/web-quality-audit": "web-quality-audit",
+        "skills/accessibility": "accessibility",
+        "skills/performance": "performance",
+        "skills/core-web-vitals": "core-web-vitals",
+        "skills/seo": "seo",
+        "skills/best-practices": "best-practices"
+      },
+      "navigator": {"skills/visual-regression": "visual-regression"}
+    },
+    "framework": {
+      "jeffallan": {
+        "skills/react-expert": "react-expert",
+        "skills/nextjs-developer": "nextjs-developer",
+        "skills/vue-expert": "vue-expert",
+        "skills/angular-architect": "angular-architect"
+      },
+      "cloudai-x": {
+        "skills/threejs-fundamentals": "threejs-fundamentals",
+        "skills/threejs-geometry": "threejs-geometry",
+        "skills/threejs-materials": "threejs-materials",
+        "skills/threejs-lighting": "threejs-lighting",
+        "skills/threejs-textures": "threejs-textures",
+        "skills/threejs-animation": "threejs-animation",
+        "skills/threejs-interaction": "threejs-interaction",
+        "skills/threejs-loaders": "threejs-loaders",
+        "skills/threejs-shaders": "threejs-shaders",
+        "skills/threejs-postprocessing": "threejs-postprocessing",
+        "skills/threejs-performance": "threejs-performance",
+        "skills/threejs-react-three-fiber": "threejs-react-three-fiber",
+        "skills/threejs-asset-pipeline": "threejs-asset-pipeline"
+      }
+    }
+  }
+}
